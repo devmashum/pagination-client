@@ -3,14 +3,16 @@ import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fa
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([])
+    const { count } = useLoaderData();
+    console.log(count);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('http://localhost:3000/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);
